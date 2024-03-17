@@ -7,6 +7,7 @@ use num_traits::FromPrimitive;
 use self_rust_tokenize::SelfRustTokenize;
 use std::{num::ParseFloatError, str::FromStr};
 
+#[const_trait]
 pub trait RatioConstTypeTrait:
     Copy
     + Eq
@@ -17,7 +18,8 @@ pub trait RatioConstTypeTrait:
     + ConstParamTy
 {
 }
-impl<
+
+impl <
         T: Copy
             + Eq
             + Ord
@@ -25,7 +27,7 @@ impl<
             + quote::ToTokens
             + ~const const_ops::Mul<Output = Self>
             + ConstParamTy,
-    > RatioConstTypeTrait for T
+    > const RatioConstTypeTrait for T
 {
 }
 
